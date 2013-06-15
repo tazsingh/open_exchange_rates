@@ -15,8 +15,9 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = OpenExchangeRates::VERSION
 
-  gem.add_dependency('yajl-ruby')
+  gem.add_dependency('multi_json')
 
+  gem.add_development_dependency('test-unit')
   gem.add_development_dependency('rr')
   gem.add_development_dependency('rake')
 end

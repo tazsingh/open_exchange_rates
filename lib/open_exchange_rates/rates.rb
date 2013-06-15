@@ -79,13 +79,15 @@ module OpenExchangeRates
     end
 
     def parse_latest
-      @latest_parser ||= OpenExchangeRates::Parser.new
-      @latest_parser.parse(open("#{OpenExchangeRates::LATEST_URL}?app_id=#{@app_id}"))
+      ::MultiJson.load(
+        open("#{OpenExchangeRates::LATEST_URL}?app_id=#{@app_id}").read
+      )
     end
 
     def parse_on(date_string)
-      @on_parser = OpenExchangeRates::Parser.new
-      @on_parser.parse(open("#{OpenExchangeRates::BASE_URL}/historical/#{date_string}.json?app_id=#{@app_id}"))
+      ::MultiJson.load(
+        open("#{OpenExchangeRates::BASE_URL}/historical/#{date_string}.json?app_id=#{@app_id}").read
+      )
     end
 
   end
